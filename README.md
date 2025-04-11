@@ -17,12 +17,14 @@ $forwardingReport | Export-Csv -Path "c:\temp\forwardingreport.csv" -NoTypeInfor
 
 
 Install Exchange Online Powershell module
-```powershell Install-Module ExchangeOnlineManagement -Force``
-
+```powershell
+Install-Module ExchangeOnlineManagement -Force
+```
 
 Connect to Exchange Online
-```powershell Connect-ExchangeOnline```
-
+```powershell
+Connect-ExchangeOnline
+```
 
 Author: Levar Norwood
 Date: 2025-04-02
