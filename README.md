@@ -9,13 +9,6 @@ This script is designed to automate the process of generating a report for forwa
 ./mailboxfwdreport.ps1
 ```
 
----
-
-### Remote path run of script
-```powershell
-Invoke-Expression "& { $(Invoke-RestMethod https://github.com/lev2pr0/mailboxforwardreport/blob/main/mailboxfwdreport.ps1) } -Parameter1 -Parameter2"
-```
-
 <br></br>
 ## Parameters 
 
