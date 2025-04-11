@@ -1,4 +1,4 @@
-# mailboxforwardreport
+# Mailbox Forward Report
 
 This script is designed to automate the process of generating a report for forwarding addresses on user/shared mailboxes
 
@@ -8,12 +8,14 @@ This script is designed to automate the process of generating a report for forwa
 
 ## EXAMPLES
 
-# Export report to CSV
+### Export report to CSV
+```powershell
 $forwardingReport | Export-Csv -Path "c:\temp\forwardingreport.csv" -NoTypeInformation
+```
 
 ## NOTES
 
-# M365 Prerequisites to Run: 
+### M365 Prerequisites to Run: 
 
 
 Install Exchange Online Powershell module
@@ -21,14 +23,12 @@ Install Exchange Online Powershell module
 Install-Module ExchangeOnlineManagement -Force
 ```
 
+
 Connect to Exchange Online
 ```powershell
 Connect-ExchangeOnline
 ```
 
-Author: Levar Norwood
-Date: 2025-04-02
-Version: 2.0
 
 ## Contributing
 
