@@ -1,5 +1,5 @@
-#Function to pull forwarding report for UserMailbox and SharedMailbox
-#Excludes empty objects for ForwardingSmtpAddress field
+#Function to pull forwarding report for User and Shared Mailbox
+#Excludes empty objects for ForwardingSMTPAddress field
 Function mailboxfwdreport {
     param(
         [string[]]$Domains=@(),
@@ -67,7 +67,7 @@ Function mailboxfwdreport {
 
     # Export results to CSV
     try {
-        $results | Export-Csv -Path $OutputPath -NoTypeInformation
+    $results | Export-Csv -Path $OutputPath -NoTypeInformation
         Write-Host "Report exported to $OutputPath" -ForegroundColor Green
     } catch {
         Write-Host "Error exporting results to CSV: $_" -ForegroundColor Red
