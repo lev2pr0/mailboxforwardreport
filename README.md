@@ -7,7 +7,7 @@ To address these challenges, this script is designed to automate the process of 
 <br></br>
 For further reporting capabilities, refer to the [Public Distribution List](https://github.com/lev2pr0/publicDLreport) reporting feature, which allows security professionals to retrieve reports of all Distribution Lists open to external senders, enabling them to send mail to both internal and external recipients. 
 <br></br>
-**Support?** Feel free to treat me to lunch 🥪 or decaf coffee ☕️ via [Paypal](https://paypal.me/LevarN?country.x=US&locale.x=en_US)
+**Support?** Feel free to treat me to lunch 🥪 or decaf coffee ☕️ via [Paypal Donation](https://www.paypal.com/donate/?business=E7G9HLW2WPV22&no_recurring=1&item_name=Empowering+all+to+achieve+success+through+technology.%0A&currency_code=USD)
 
 <br></br>
 ## Installation
