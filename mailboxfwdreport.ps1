@@ -27,8 +27,7 @@ Function mailboxfwdreport {
     }
 
     # Gather domains to consider internal for report
-    if (($Domains.count -lt 1) -or ($Domains[0].length -lt 1)) {
-        try {
+    if (($Domains.count -lt 1) -or ($Domains[0].length -lt 1)) {    
             $Domains = ((Read-host "Type in a comma-separated list of your email domains, IE domain1.com,domain2.com") -replace ('@|"| ','')) -split ","
             # Validate domains
             $Domains = $Domains | Where-Object { $_ -match '^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' }
@@ -36,10 +35,6 @@ Function mailboxfwdreport {
                 Write-Host "No valid domains provided. Exiting." -ForegroundColor Red
                 return
             }
-        } catch {
-            Write-Host "Error reading domains input: $_" -ForegroundColor Red
-            return
-        }
     }
 
     $mailboxes = Get-Mailbox -ResultSize Unlimited | Where-Object {
