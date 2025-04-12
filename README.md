@@ -9,13 +9,6 @@ This script is designed to automate the process of generating a report for forwa
 ./mailboxfwdreport.ps1
 ```
 
----
-
-### Remote path run of script
-```powershell
-Invoke-Expression "& { $(Invoke-RestMethod https://github.com/lev2pr0/mailboxforwardreport/blob/main/mailboxfwdreport.ps1) } -Parameter1 -Parameter2"
-```
-
 <br></br>
 ## Parameters 
 
@@ -46,9 +39,17 @@ Connect to Exchange Online
 ```powershell
 Connect-ExchangeOnline
 ```
-**Please Note:** Minimum role required is **Exchange Administrator** and may require **Global Administrator** if using custom role
+### Warning
+-- Always test the script in a non-production environment first.
 
----
+
+-- Review the script's code and understand its functionality before execution.
+
+
+-- The script may require specific permissions or elevated privileges to run correctly.
+
+
+-- The script's behavior may vary depending on the system configuration and environment.
 
 <br></br>
 ## Contributing
