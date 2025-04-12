@@ -11,39 +11,44 @@ Function mailboxfwdreport {
     if ($onpremEX -eq $false) {
         Write-Host "Connecting to Exchange Online..." -ForegroundColor Cyan
         try {
-            $exchSessions = (Get-ConnectionInformation | Where-Object {$_.name -like "*ExchangeOnline*"})
-            if ($exchSessions.count -lt 1) {
-                Connect-ExchangeOnline
-            } else {
-                Write-Host "Already connected to Exchange Online." -ForegroundColor Green
-            }
+        $exchSessions = (Get-ConnectionInformation | Where-Object {$_.name -like "*ExchangeOnline*"})
+        if ($exchSessions.count -lt 1) {
+            Connect-ExchangeOnline
+        } else {
+            Write-Host "Already connected to Exchange Online." -ForegroundColor Green
+        }
         } catch {
             Write-Host "Error connecting to Exchange Online: $_" -ForegroundColor Red
-            Write-Host "If using on-premise Exchange, then rerun use -onPremEX switch" -ForegroundColor Red
+            Write-Host "If using on-premise Exchange, then rerun using -onPremEX switch" -ForegroundColor Red
             return
-        }
+                }
     } else {
         Write-Host "Skipping Exchange Online connection as -onPremEX is provided." -ForegroundColor Cyan
     }
 
     # Gather domains to consider internal for report
     if (($Domains.count -lt 1) -or ($Domains[0].length -lt 1)) {    
-            $Domains = ((Read-host "Type in a comma-separated list of your email domains, IE domain1.com,domain2.com") -replace ('@|"| ','')) -split ","
-            # Validate domains
-            $Domains = $Domains | Where-Object { $_ -match '^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' }
-            if ($Domains.count -lt 1) {
-                Write-Host "No valid domains provided. Exiting." -ForegroundColor Red
-                return
-            }
+    $Domains = ((Read-host "Type in a comma-separated list of your email domains, IE domain1.com,domain2.com") -replace ('@|"| ','')) -split ","
+    
+    # Validate domains
+    $Domains = $Domains | Where-Object { $_ -match '^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' }
+    if ($Domains.count -lt 1) {
+        Write-Host "No valid domains provided. Exiting." -ForegroundColor Red
+        return
+        }
     }
     
     # Get all user and shared mailboxes with forwardingSMTPaddress
+    Write-Host "Gathering mailboxes with forwarding addresses..." -ForegroundColor Cyan
+    try {
     $mailboxes = Get-Mailbox -ResultSize Unlimited | Where-Object {
         $_.RecipientTypeDetails -eq "UserMailbox" -or $_.RecipientTypeDetails -eq "SharedMailbox"
-    } | Where-Object {
-        $_.ForwardingSmtpAddress -ne $null
+        } | Where-Object {$_.ForwardingSmtpAddress -ne $null}
+    } catch {
+        Write-Host "Error retrieving mailboxes: $_" -ForegroundColor Red
+        return
     }
-    
+
     # Search for mailboxes with forwarding addresses, compare to $domains, and create PS Object for report
     $results = @()
     $mailboxes | ForEach-Object {
