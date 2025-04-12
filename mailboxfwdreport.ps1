@@ -36,14 +36,15 @@ Function mailboxfwdreport {
                 return
             }
     }
-
+    
+    # Get all user and shared mailboxes with forwardingSMTPaddress
     $mailboxes = Get-Mailbox -ResultSize Unlimited | Where-Object {
         $_.RecipientTypeDetails -eq "UserMailbox" -or $_.RecipientTypeDetails -eq "SharedMailbox"
     } | Where-Object {
         $_.ForwardingSmtpAddress -ne $null
     }
     
-    # Search for mailboxes with forwarding addresses and compare to $domains
+    # Search for mailboxes with forwarding addresses, compare to $domains, and create PS Object for report
     $results = @()
     $mailboxes | ForEach-Object {
         $forwardingaddress = $_.ForwardingSmtpAddress.ToString()
