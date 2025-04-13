@@ -61,7 +61,7 @@ Function mailboxfwdreport {
         $results += [PSCustomObject]@{
             DisplayName             = $_.DisplayName
             PrimarySmtpAddress      = $_.PrimarySmtpAddress
-            ForwardingSmtpAddress   =  if ($_.ForwardingSmtpAddress -match ":") { ($forwardingaddress -split ":")[1] } else $_.ForwardingSmtpAddress
+            ForwardingSmtpAddress   =  if ($_.ForwardingSmtpAddress -match ":") { ($forwardingaddress -split ":")[1] } else { $_.ForwardingSmtpAddress }
             DeliverToMailboxAndForward = $_.DeliverToMailboxAndForward
             Organization        = if ($isInternal) { "Internal" } else { "External" }
         }
