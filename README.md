@@ -70,10 +70,12 @@ mailboxfwdreport -Domains "domain1.com,domain2.com" -onpremEX
 ## Demo
 
 ### Report in directory
+![Screenshot_CSVinDirectory](https://github.com/user-attachments/assets/df015eb1-14cd-465b-a9b3-8dbf36393279)
 
-### CSV Report imported in Microsoft Excel
+#
 
-<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGlmcmhqeWZkejFnZHV3MnU2MTIxYjczNW9ldTJmdm1leDdsaXR4YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vR1dPIYzQmkRzLZk2w/giphy.gif" width="200" height="200" />
+### CSV Report in Microsoft Excel
+![Screenshot_CSVinExcel](https://github.com/user-attachments/assets/7465e627-548d-42f3-8f0e-88a3211a795e)
 
 <br></br>
 ## NOTES
