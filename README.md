@@ -16,7 +16,12 @@ For further reporting capabilities, refer to the [Public Distribution List](http
 
 ## Installation
 
-<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGlmcmhqeWZkejFnZHV3MnU2MTIxYjczNW9ldTJmdm1leDdsaXR4YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vR1dPIYzQmkRzLZk2w/giphy.gif" width="200" height="200" />
+1. Download or make copy of script [here](https://github.com/lev2pr0/mailboxforwardreport/blob/main/mailboxfwdreport.ps1)
+2. Take note of the script’s path
+3. Open PowerShell as an administrator
+4. Use ```Set-ExecutionPolicy -ExecutionPolicy <VALUE> -Scope <VALUE>``` to change to acceptable [Execution Policy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.5#-executionpolicy)
+5. **Optional:** Navigate to directory location of script using ```cd``` command (Example: ```cd “C:\MyFolder”```)
+6. Run PowerShell Script ```.\<scriptname>.ps1``` or ```C:\MyFolder\<scriptname>.ps1```
 
 <br></br>
 ## Parameters 
@@ -45,26 +50,20 @@ Skips the connection to Exchange Online sessions entirely for Exchange Managemen
 
 ### Run the function to generate a Mailbox Forward report for Exchange Online examples
 ```powershell
-./mailboxfwdreport.ps1 -Domains "domain1.com,domain2.com" -OutputPath "C:\Reports"
+mailboxfwdreport -Domains "domain1.com,domain2.com" -OutputPath "C:\Reports"
 ```
 ```powershell
-./mailboxfwdreport.ps1 -Domains "domain1.com,domain2.com"
-```
-```powershell
-./mailboxfwdreport.ps1 -Domains "domain1.com,domain2.com" -showExternalOnly
+mailboxfwdreport -Domains "domain1.com,domain2.com"
 ```
 
 ---
 
 ### Run the function to generate a Mailbox Forward report for Exchange On-Premise examples
 ```powershell
-./mailboxfwdreport.ps1 -Domains "domain1.com,domain2.com" -OutputPath "C:\Reports" -onpremEX 
+mailboxfwdreport -Domains "domain1.com,domain2.com" -OutputPath "C:\Reports" -onpremEX 
 ```
 ```powershell
-./mailboxfwdreport.ps1 -Domains "domain1.com,domain2.com" -onpremEX
-```
-```powershell
-./mailboxfwdreport.ps1 -Domains "domain1.com,domain2.com" -onpremEX -showExternalOnly
+mailboxfwdreport -Domains "domain1.com,domain2.com" -onpremEX
 ```
 
 <br></br>
@@ -91,7 +90,7 @@ Install Exchange Online Powershell module
 ```powershell
 Install-Module ExchangeOnlineManagement -Force
 ```
-**Please Note:** Only use for first time accessing Exchange Online via Powershell on local machine
+**Please Note:** This will require restart of terminal after install. Only use for first time accessing Exchange Online via Powershell on local machine.
 
 #
 
