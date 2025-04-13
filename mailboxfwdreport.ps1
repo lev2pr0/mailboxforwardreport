@@ -4,7 +4,7 @@ Function mailboxfwdreport {
     param(
         [string[]]$Domains=@(),
         [switch]$onpremEX,
-        [string]$OutputPath = "mailboxfwdreport.csv" # Default output path
+        [string]$OutputPath = "PublicDLReport_$(Get-Date -Format 'yyyyMMdd_HHmmss').csv" # Default output path
     )
 
     # Connect to Exchange Online and skips if -onpremEX switch is found
