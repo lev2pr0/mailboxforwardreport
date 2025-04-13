@@ -31,7 +31,7 @@ Allows the user to specify the location of the exported CSV file.
 ```powershell
 -Domains
 ```
-Specifies the email domains to be used for filtering external members. This parameter accepts a comma-separated list of domains. If not provided, the script will prompt for input.
+Specifies the email domains to be used for filtering external members. This parameter accepts a comma-separated list of domains. If not provided, the script will end. 
 
 ---
 
@@ -43,8 +43,29 @@ Skips the connection to Exchange Online sessions entirely for Exchange Managemen
 <br></br>
 ## Usage Examples
 
-<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGlmcmhqeWZkejFnZHV3MnU2MTIxYjczNW9ldTJmdm1leDdsaXR4YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vR1dPIYzQmkRzLZk2w/giphy.gif" width="200" height="200" />
+### Run the function to generate a Mailbox Forward report for Exchange Online examples
+```powershell
+./mailboxfwdreport.ps1 -Domains "domain1.com,domain2.com" -OutputPath "C:\Reports"
+```
+```powershell
+./mailboxfwdreport.ps1 -Domains "domain1.com,domain2.com"
+```
+```powershell
+./mailboxfwdreport.ps1 -Domains "domain1.com,domain2.com" -showExternalOnly
+```
 
+---
+
+### Run the function to generate a Mailbox Forward report for Exchange On-Premise examples
+```powershell
+./mailboxfwdreport.ps1 -Domains "domain1.com,domain2.com" -OutputPath "C:\Reports" -onpremEX 
+```
+```powershell
+./mailboxfwdreport.ps1 -Domains "domain1.com,domain2.com" -onpremEX
+```
+```powershell
+./mailboxfwdreport.ps1 -Domains "domain1.com,domain2.com" -onpremEX -showExternalOnly
+```
 
 <br></br>
 ## Screenshot of report imported in Excel
@@ -54,8 +75,17 @@ Skips the connection to Exchange Online sessions entirely for Exchange Managemen
 <br></br>
 ## NOTES
 
-### Exchange Online Prerequisites to Run: 
+### Supported Versions
 
+-- Exchange Online PowerShell V2 module, version 2.0.4 or later
+
+-- Powershell 7 or later
+
+-- Exchange Server 2013, 2016, and 2019
+
+#
+
+### Exchange Online Prerequisites to Run: 
 
 Install Exchange Online Powershell module
 ```powershell
@@ -63,7 +93,8 @@ Install-Module ExchangeOnlineManagement -Force
 ```
 **Please Note:** Only use for first time accessing Exchange Online via Powershell on local machine
 
-<br></br>
+#
+
 ### Warning
 -- Always test the script in a non-production environment first.
 
@@ -91,7 +122,7 @@ Please follow best practice outlined below:
 6. Test, test, test and verify
 7. Open pull request to ```main``` with details of changes (screenshots if applicable)
 
-Once steps complete, I will engage to discuss changes if required and evaluate readiness for merge. Cases where pull requests are closed I will provide detailed notes on the why and provide direction for your next pull request. 
+Once steps complete, I will engage to discuss changes if required and evaluate readiness for merge. Cases where pull requests are closed, I will provide detailed notes on the why and provide direction for your next pull request.
 
 <br></br>
 ## License
