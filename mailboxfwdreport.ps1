@@ -1,3 +1,4 @@
+[README.md](#https://github.com/lev2pr0/mailboxforwardreport/blob/main/README.md)
 #Function to pull forwarding report for User and Shared Mailbox
 #Excludes empty objects for ForwardingSMTPAddress field
 Function mailboxfwdreport {
