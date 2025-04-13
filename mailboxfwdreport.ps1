@@ -11,19 +11,19 @@ Function mailboxfwdreport {
     # Connect to Exchange Online and skips if -onpremEX switch is found
     if ($onpremEX -eq $false) {
         Write-Host "Connecting to Exchange Online..." -ForegroundColor Cyan
-        try {
+        try { # Check for existing Exchange Online sessions
         $exchSessions = (Get-ConnectionInformation | Where-Object {$_.name -like "*ExchangeOnline*"})
-        if ($exchSessions.count -lt 1) {
+        if ($exchSessions.count -lt 1) { # Connect to Exchange Online if no existing session
             Connect-ExchangeOnline
-        } else {
+        } else { # Confirm existing connection to Exchange Online
             Write-Host "Already connected to Exchange Online." -ForegroundColor Green
         }
-        } catch {
+        } catch { # Handle errors connecting to Exchange Online
             Write-Host "Error connecting to Exchange Online: $_" -ForegroundColor Red
             Write-Host "If using on-premise Exchange, then rerun using -onPremEX switch" -ForegroundColor Red
             return
                 }
-    } else {
+    } else { # Skip Exchange Online session check and connection
         Write-Host "Skipping Exchange Online connection as -onPremEX is provided." -ForegroundColor Cyan
     }
 
@@ -33,7 +33,7 @@ Function mailboxfwdreport {
     
     # Validate domains
     $Domains = $Domains | Where-Object { $_ -match '^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' }
-    if ($Domains.count -lt 1) {
+    if ($Domains.count -lt 1) { # Handle errors for invalid user inputs
         Write-Host "No valid domains provided. Exiting." -ForegroundColor Red
         return
         }
@@ -41,22 +41,23 @@ Function mailboxfwdreport {
     
     # Get all user and shared mailboxes with forwardingSMTPaddress
     Write-Host "Gathering mailboxes with forwarding addresses..." -ForegroundColor Cyan
-    try {
+    try { 
     $mailboxes = Get-Mailbox -ResultSize Unlimited | Where-Object {
         $_.RecipientTypeDetails -eq "UserMailbox" -or $_.RecipientTypeDetails -eq "SharedMailbox"
         } | Where-Object {$_.ForwardingSmtpAddress -ne $null}
-    } catch {
+    } catch { # Handle errors for each mailbox
         Write-Host "Error retrieving mailboxes: $_" -ForegroundColor Red
         return
     }
 
-    # Search for mailboxes with forwarding addresses, compare to $domains, and create PS Object for report
+    # Search for mailboxes with forwarding addresses configured
+    # Split domains to compare if Internal or External
     $results = @()
     $mailboxes | ForEach-Object {
         $forwardingaddress = $_.ForwardingSmtpAddress.ToString()
         $domainPart = ($forwardingaddress -split "@")[1]
         $isInternal = $Domains -contains $domainPart
-
+        # Build report of mailboxes with forwardingSMTPaddress configured
         $results += [PSCustomObject]@{
             DisplayName             = $_.DisplayName
             PrimarySmtpAddress      = $_.PrimarySmtpAddress
@@ -70,7 +71,7 @@ Function mailboxfwdreport {
     try {
     $results | Export-Csv -Path $OutputPath -NoTypeInformation
         Write-Host "Report exported to $OutputPath" -ForegroundColor Green
-    } catch {
+    } catch { # Handle errors during export
         Write-Host "Error exporting results to CSV: $_" -ForegroundColor Red
     }
 }
