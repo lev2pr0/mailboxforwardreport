@@ -1,4 +1,4 @@
-[README.md]#https://github.com/lev2pr0/mailboxforwardreport/blob/main/README.md)
+#README.md(https://github.com/lev2pr0/mailboxforwardreport/blob/main/README.md)
 #Function to pull forwarding report for User and Shared Mailbox
 #Excludes empty objects for ForwardingSMTPAddress field
 Function mailboxfwdreport {
@@ -34,7 +34,9 @@ Function mailboxfwdreport {
     # Validate domains
     $Domains = $Domains | Where-Object { $_ -match '^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' }
     if ($Domains.count -lt 1) { # Handle errors for invalid user inputs
-        Write-Host "No valid domains provided. Exiting." -ForegroundColor Red
+        Write-Host "No valid domains provided." -ForegroundColor Red
+        Write-Host "Please provide a valid domain list in the format: domain1.com,domain2.com" -ForegroundColor Red
+        Write-Host "Exiting script." -ForegroundColor Red
         return
         }
     }
@@ -68,10 +70,14 @@ Function mailboxfwdreport {
     }
 
     # Export results to CSV
-    try {
-    $results | Export-Csv -Path $OutputPath -NoTypeInformation
-        Write-Host "Report exported to $OutputPath" -ForegroundColor Green
-    } catch { # Handle errors during export
-        Write-Host "Error exporting results to CSV: $_" -ForegroundColor Red
+    if ($results.Count -gt 0) {
+        try {
+            $results | Export-Csv -Path $OutputPath -NoTypeInformation
+            Write-Host "Report exported to $OutputPath" -ForegroundColor Green
+        } catch {
+            Write-Host "Error exporting results to CSV: $_" -ForegroundColor Red
+        }
+    } else {
+        Write-Host "No results to export." -ForegroundColor Yellow
     }
 }
