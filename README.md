@@ -1,9 +1,9 @@
 # Mailbox Forward Report
 ## Purpose 
 
-Microsoft’s current reporting on forwarding within organizations is reactive in nature. This reactive approach can lead to missed insider threats if not reported promptly. Additionally, manually creating reports via PowerShell can be time-consuming for security professionals.
+In the face of escalating insider threats, the reporting of data breaches has become paramount for safeguarding organizational integrity. The most prevalent threat originates from employees misusing their access privileges for data exfiltration, often driven by personal gain. 
 <br></br>
-To address these challenges, this script is designed to automate the process of generating a report on configured forwarding SMTP addresses on user or shared mailboxes.
+To address these challenges at the mailbox level, this script is designed to automate the generation of a report on configured forwarding SMTP addresses for user or shared mailboxes.
 <br></br>
 For further reporting capabilities, refer to the [Public Distribution List](https://github.com/lev2pr0/publicDLreport) reporting feature, which allows security professionals to retrieve reports of all Distribution Lists open to external senders, enabling them to send mail to both internal and external recipients. 
 <br></br>
@@ -67,7 +67,13 @@ mailboxfwdreport -Domains "domain1.com,domain2.com" -onpremEX
 ```
 
 <br></br>
-## Screenshot of report imported in Excel
+## Demo
+
+### Report in directory
+
+### CSV Report
+
+### CSV Report imported in Microsoft Excel
 
 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGlmcmhqeWZkejFnZHV3MnU2MTIxYjczNW9ldTJmdm1leDdsaXR4YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vR1dPIYzQmkRzLZk2w/giphy.gif" width="200" height="200" />
 
