@@ -62,7 +62,7 @@ Function mailboxfwdreport {
             PrimarySmtpAddress      = $_.PrimarySmtpAddress
             ForwardingSmtpAddress   = $_.ForwardingSmtpAddress
             DeliverToMailboxAndForward = $_.DeliverToMailboxAndForward
-            InternalExternal        = if ($isInternal) { "Internal" } else { "External" }
+            Organization        = if ($isInternal) { "Internal" } else { "External" }
         }
     }
 
