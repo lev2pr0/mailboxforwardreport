@@ -66,6 +66,8 @@ mailboxfwdreport -Domains "domain1.com,domain2.com" -onpremEX
 ### Report in directory
 ![Screenshot_CSVinDirectory](https://github.com/user-attachments/assets/df015eb1-14cd-465b-a9b3-8dbf36393279)
 
+**Important Note:** CSV report will show as *MailboxFWDReport_yyyyMMdd_HHmmss.csv* in current directory of terminal if ```-OutputPath``` not specified.
+
 #
 
 ### CSV Report in Microsoft Excel
