@@ -100,7 +100,7 @@ Install-Module ExchangeOnlineManagement -Force
 
 #
 
-### Warning
+### Disclaimers
 -- Always test the script in a non-production environment first.
 
 
