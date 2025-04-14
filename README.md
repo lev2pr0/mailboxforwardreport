@@ -6,14 +6,8 @@ In the face of escalating insider threats, the reporting of data breaches has be
 To address these challenges at the mailbox level, this script is designed to automate the generation of a report on configured forwarding SMTP addresses for user or shared mailboxes.
 <br></br>
 For further reporting capabilities, refer to the [Public Distribution List](https://github.com/lev2pr0/publicDLreport) reporting feature, which allows security professionals to retrieve reports of all Distribution Lists open to external senders, enabling them to send mail to both internal and external recipients. 
+
 <br></br>
-
-<p align="center" 
- 
- **How to support?** Buy me coffee ☕️ via [Paypal](https://www.paypal.com/donate/?business=E7G9HLW2WPV22&no_recurring=1&item_name=Empowering+all+to+achieve+success+through+technology.%0A&currency_code=USD)
-
-</p>
-
 ## Installation
 
 1. Download or make copy of script [here](https://github.com/lev2pr0/mailboxforwardreport/blob/main/mailboxfwdreport.ps1)
@@ -129,7 +123,14 @@ Please follow best practice outlined below:
 
 Once steps complete, I will engage to discuss changes if required and evaluate readiness for merge. Cases where pull requests are closed, I will provide detailed notes on the why and provide direction for your next pull request.
 
-<br></br>
+</br>
+
+<p align="center" 
+ 
+ **How to support?** Buy me coffee ☕️ via [Paypal](https://www.paypal.com/donate/?business=E7G9HLW2WPV22&no_recurring=1&item_name=Empowering+all+to+achieve+success+through+technology.%0A&currency_code=USD)
+
+</p>
+
 ## License
 
 [MIT License](https://choosealicense.com/licenses/mit/)
