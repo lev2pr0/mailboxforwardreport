@@ -18,12 +18,12 @@ Function mailboxfwdreport {
         } else { # Confirm existing connection to Exchange Online
             Write-Host "Already connected to Exchange Online." -ForegroundColor Green
         }
-        } catch { # Handle errors connecting to Exchange Online
-            Write-Host "Error connecting to Exchange Online: $_" -ForegroundColor Red
-            Write-Host "If using Exchange Management Shell on Exchange Server, then rerun using -onpremEX switch" -ForegroundColor Red
-            Write-Host "Exiting script." -ForegroundColor Red
-            return
-                }
+    } catch { # Handle errors connecting to Exchange Online
+        Write-Host "Error connecting to Exchange Online: $_" -ForegroundColor Red
+        Write-Host "If using Exchange Management Shell on Exchange Server, then rerun using -onpremEX switch" -ForegroundColor Red
+        Write-Host "Exiting script." -ForegroundColor Red
+        return
+            }
     } else { # Skip Exchange Online session check and connection
         Write-Host "Skipping Exchange Online connection as -onpremEX is provided." -ForegroundColor Cyan
     }
